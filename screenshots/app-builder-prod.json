@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "コマ帖",
+      "hasCanvas": false,
+      "bodyTextLen": 195,
+      "bodyTextHash": "03ee28ac9265c7a8d6be00db7a6fb4dd3d53382e013f4540d9643fc9cc3bb44f",
+      "bodyTextPrefix": "フォルダ 作成 すべての画像 0 未分類 0 ファイル一覧 このフォルダにファイルはありません コマ帖 昇順 降順 お気に入りの",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-prod.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "コマ帖",
+      "hasCanvas": false,
+      "bodyTextLen": 76,
+      "bodyTextHash": "200588c65b4aa57ccd8ba6da41cc7a6fa93f05fe1567a7d9af8697969fedb411",
+      "bodyTextPrefix": "コマ帖 お気に入りのみ 選択タグ すべて外す タグを選ぶとここに出ます ネガティブタグ すべて外す タグを選ぶとここに出ます 0",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-prod-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-prod.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

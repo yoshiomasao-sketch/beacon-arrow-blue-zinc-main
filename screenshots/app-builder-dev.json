@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "ポートフォリオΔ",
+      "hasCanvas": false,
+      "bodyTextLen": 292,
+      "bodyTextHash": "acf1da62d76b049e2540a2dea1aa4a0a08f6f7fdc6b02552fac2041538090305",
+      "bodyTextPrefix": "フォルダ 作成 コピーフォルダ 貼りつけ すべての画像 0 未分類 0 ファイル一覧 このフォルダにファイルはありません タブ ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-dev.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "ポートフォリオΔ",
+      "hasCanvas": false,
+      "bodyTextLen": 111,
+      "bodyTextHash": "5e59527b72b2163c17dc96bea02cabf211e75dfddc5e32a94b3a33e05ad8b201",
+      "bodyTextPrefix": "お気に入りのみ 保存 復元 スライドショー シャッフル 日付順でソート アニメ▶️ 選択タグ すべて一致すべて外す タグを選ぶと",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-dev-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-dev.json"
+}

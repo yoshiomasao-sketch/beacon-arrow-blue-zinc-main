@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "コマ帖",
+      "hasCanvas": false,
+      "bodyTextLen": 201,
+      "bodyTextHash": "2817fc96747893961fc4333272227d17a1bf5a2aad5082aae88c14ce700631cf",
+      "bodyTextPrefix": "フォルダ 作成 すべての画像 0 ファイル一覧 このフォルダにファイルはありません コマ帖 昇順 降順 お気に入りのみ 広く 狭",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/ui-smoke.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "コマ帖",
+      "hasCanvas": false,
+      "bodyTextLen": 90,
+      "bodyTextHash": "bf761c73079c72fd6472e05a1e2fe6c61383f1aea449f903d2f98472f841e166",
+      "bodyTextPrefix": "コマ帖 昇順 降順 お気に入りのみ 広く 狭く 2列 復元 選択タグ すべて外す ここにタグをドロップ ネガティブタグ すべて外",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/ui-smoke-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/ui-smoke.json"
+}

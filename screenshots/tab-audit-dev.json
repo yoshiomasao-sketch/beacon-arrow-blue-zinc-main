@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "コマ帖",
+      "hasCanvas": false,
+      "bodyTextLen": 207,
+      "bodyTextHash": "fa666209ad88024bb17c1da946446eb8e50ead00640c3fe3604b4fc6aa63c78e",
+      "bodyTextPrefix": "フォルダ 作成 すべての画像 0 ファイル一覧 このフォルダにファイルはありません コマ帖 1 2 3 昇順 降順 お気に入りの",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/tab-audit-dev.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "コマ帖",
+      "hasCanvas": false,
+      "bodyTextLen": 175,
+      "bodyTextHash": "6edc24510259e613f0498920a1037f630dc95d22be9248a2591ff232690286aa",
+      "bodyTextPrefix": "フォルダ 作成 すべての画像 0 ファイル一覧 このフォルダにファイルはありません コマ帖 昇順 降順 お気に入りのみ 広く 狭",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/tab-audit-dev-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/tab-audit-dev.json"
+}

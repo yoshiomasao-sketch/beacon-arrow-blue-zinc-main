@@ -1,0 +1,58 @@
+node_modules/
+.project_id
+.github_repo
+.env
+.env.*
+
+# Build outputs
+dist/
+dist-tauri/
+src-tauri/target/
+
+# Local backup files
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local deployment configuration
+.grok/app-env.json
+.vercel/
+
+# Grok Build temporary preview files
+.grok/preview.log
+.grok/status
+.grok/og-preview.png
+.grok/x-banner-preview.png
+
+# Temporary Vite debugging files
+.node_modules.lock
+/vite-*-test.mjs
+/vite.tauri.config.backup.ts
+/vite.tauri.config.debug-backup.ts
+/vite.tauri.config.debug.ts
+
+# Temporary Vite debug configurations
+vite.tauri.config.backup.ts
+vite.tauri.config.debug.ts
+vite.tauri.config.debug-backup.ts
+
+# Temporary Vite test scripts
+vite-entry-test.mjs
+vite-html-test.mjs
+vite-main-test.mjs
+
+# Empty local lock file
+.node_modules.lock
+
+# Generated preview images
+.grok/og-preview.png
+.grok/x-banner-preview.png
+
+scripts/with-app-env.mjs.backup
+src-tauri/src/lib.backup.rs
+src-tauri/tauri.conf.backup.json
+src-tauri/tauri.conf.success-20261105.json
+src/lib/portfolio/desktop-drop.backup-20261105.ts

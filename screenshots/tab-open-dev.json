@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "コマ帖",
+      "hasCanvas": false,
+      "bodyTextLen": 195,
+      "bodyTextHash": "03ee28ac9265c7a8d6be00db7a6fb4dd3d53382e013f4540d9643fc9cc3bb44f",
+      "bodyTextPrefix": "フォルダ 作成 すべての画像 0 未分類 0 ファイル一覧 このフォルダにファイルはありません コマ帖 昇順 降順 お気に入りの",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/tab-open-dev.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "コマ帖",
+      "hasCanvas": false,
+      "bodyTextLen": 86,
+      "bodyTextHash": "a85cf23cb8caccedaa6d2c937f249d5f859eced803aeee9aec484efa0286ed75",
+      "bodyTextPrefix": "コマ帖 お気に入りのみ バックアップ 復元 選択タグ すべて外す タグを選ぶとここに出ます ネガティブタグ すべて外す タグを選",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/tab-open-dev-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/tab-open-dev.json"
+}
