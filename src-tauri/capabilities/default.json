@@ -9,6 +9,7 @@
     "core:default",
     "fs:allow-read-file",
     "fs:allow-write-file",
-    "dialog:allow-save"
+    "dialog:allow-save",
+    "updater:default"
   ]
 }
