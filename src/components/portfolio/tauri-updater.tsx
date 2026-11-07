@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { isTauri } from "@tauri-apps/api/core";
 import { getVersion } from "@tauri-apps/api/app";
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { confirm, message } from "@tauri-apps/plugin-dialog";
 import { check } from "@tauri-apps/plugin-updater";
 
 /**
@@ -43,12 +44,19 @@ export function TauriUpdater() {
 
     void (async () => {
       let update: Awaited<ReturnType<typeof check>> = null;
+
       try {
         update = await check();
         if (!update || cancelled) return;
 
-        const accepted = window.confirm(
+        const accepted = await confirm(
           `ポートフォリオΔの新しいバージョン（${update.version}）があります。\n\n今すぐ更新しますか？\n更新中はアプリが終了します。`,
+          {
+            title: "アップデートのお知らせ",
+            kind: "info",
+            okLabel: "更新する",
+            cancelLabel: "後で",
+          }
         );
 
         if (!accepted || cancelled) {
@@ -59,8 +67,16 @@ export function TauriUpdater() {
         await update.downloadAndInstall();
       } catch (error) {
         console.error("Tauri updater failed:", error);
+
         if (!cancelled) {
-          window.alert("アップデートの確認またはインストールに失敗しました。\n時間をおいて再度お試しください。");
+          await message(
+            "アップデートの確認またはインストールに失敗しました。\n時間をおいて再度お試しください。",
+            {
+              title: "アップデートエラー",
+              kind: "error",
+              okLabel: "閉じる",
+            }
+          );
         }
       } finally {
         if (update && !cancelled) {
