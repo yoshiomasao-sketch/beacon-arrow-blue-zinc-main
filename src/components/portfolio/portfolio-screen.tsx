@@ -1,4 +1,5 @@
 import { ClipboardPaste, Crop, FileDown, Heart, ImagePlus, Play, Shuffle } from "lucide-react";
+import { TauriUpdater } from "@/components/portfolio/tauri-updater";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type DragEvent, type PointerEvent as ReactPointerEvent } from "react";
 import { BackupActions, type BackupController } from "@/components/portfolio/backup-actions";
 import { CanvasBoard } from "@/components/portfolio/canvas-board";
@@ -1815,6 +1816,7 @@ export function PortfolioScreen() {
   if (phase === "unavailable") {
     return (
       <div className="library-shell">
+      <TauriUpdater />
         <div className="library-main">
           <div className="error-well grid place-items-center px-6 text-center">
             <div className="grid max-w-md gap-3">
