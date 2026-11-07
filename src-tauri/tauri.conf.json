@@ -37,7 +37,12 @@
     "android": {
       "debugApplicationIdSuffix": ".debug"
     },
-    "createUpdaterArtifacts": true
+    "createUpdaterArtifacts": true,
+    "windows": {
+      "wix": {
+        "language": "ja-JP"
+      }
+    }
   },
   "plugins": {
     "updater": {
