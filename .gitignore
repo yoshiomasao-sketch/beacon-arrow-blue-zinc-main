@@ -56,3 +56,7 @@ src-tauri/src/lib.backup.rs
 src-tauri/tauri.conf.backup.json
 src-tauri/tauri.conf.success-20261105.json
 src/lib/portfolio/desktop-drop.backup-20261105.ts
+
+# Tauri updater signing keys (never commit private keys)
+*.key
+*.key.pub
