@@ -1986,7 +1986,7 @@ return (
                 />
               ) : null}
               <Button variant="quiet" className="aux-btn phone-shelved" onClick={() => setStorageOpen(true)}>
-                容量
+                詳細
               </Button>
               <span ref={slideshowAnchorRef} className="slideshow-anchor">
               <Button

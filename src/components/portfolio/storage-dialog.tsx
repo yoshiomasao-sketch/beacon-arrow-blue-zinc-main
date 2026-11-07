@@ -1,5 +1,9 @@
+
 import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
+import { isTauri } from "@tauri-apps/api/core";
+import { getVersion } from "@tauri-apps/api/app";
+import { check } from "@tauri-apps/plugin-updater";
 import { Button } from "@/components/ui/button";
 import { measureStorage } from "@/lib/portfolio/db";
 import {
@@ -18,21 +22,92 @@ function Amount({ value, pending }: { value: number | null; pending: boolean }) 
 export function StorageDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
   const [snapshot, setSnapshot] = useState<StorageSnapshot | null>(null);
   const [measuring, setMeasuring] = useState(false);
+  const [version, setVersion] = useState<string | null>(null);
+  const [checkingUpdate, setCheckingUpdate] = useState(false);
+  const [updateMessage, setUpdateMessage] = useState("");
+
+  const desktop = isTauri();
 
   useEffect(() => {
     if (!open) return;
+
     let cancelled = false;
+
     setMeasuring(true);
     setSnapshot(null);
+
     void measureStorage().then((next) => {
       if (cancelled) return;
       setSnapshot(next);
       setMeasuring(false);
     });
+
     return () => {
       cancelled = true;
     };
   }, [open]);
+
+  useEffect(() => {
+    if (!open || !desktop) return;
+
+    let cancelled = false;
+
+    void getVersion()
+      .then((currentVersion) => {
+        if (!cancelled) setVersion(currentVersion);
+      })
+      .catch((error) => {
+        console.error("Failed to get app version:", error);
+        if (!cancelled) setVersion(null);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [open, desktop]);
+
+  const handleCheckUpdate = async () => {
+    if (!desktop || checkingUpdate) return;
+
+    setCheckingUpdate(true);
+    setUpdateMessage("更新を確認しています。");
+
+    let update: Awaited<ReturnType<typeof check>> = null;
+
+    try {
+      update = await check();
+
+      if (!update) {
+        setUpdateMessage("最新バージョンを使用しています。");
+        return;
+      }
+
+      const accepted = window.confirm(
+        `ポートフォリオΔの新しいバージョン（${update.version}）があります。\n\n今すぐ更新しますか？\n更新中はアプリが終了します。`,
+      );
+
+      if (!accepted) {
+        setUpdateMessage("更新をキャンセルしました。");
+        return;
+      }
+
+      setUpdateMessage("アップデートをダウンロードしています。");
+      await update.downloadAndInstall();
+      setUpdateMessage("アップデートが完了しました。アプリを再起動してください。");
+    } catch (error) {
+      console.error("Manual update check failed:", error);
+      setUpdateMessage("アップデートの確認またはインストールに失敗しました。時間をおいて再度お試しください。");
+    } finally {
+      if (update) {
+        try {
+          await update.close();
+        } catch {
+          // The updater resource may already be released after installation.
+        }
+      }
+      setCheckingUpdate(false);
+    }
+  };
 
   const usage = snapshot?.browser.usage ?? null;
   const quota = snapshot?.browser.quota ?? null;
@@ -51,9 +126,9 @@ export function StorageDialog({ open, onOpenChange }: { open: boolean; onOpenCha
         <Dialog.Content className="storage-sheet">
           <div className="flex items-start justify-between gap-3 border-b border-line px-4 py-3">
             <div>
-              <Dialog.Title className="font-medium">容量</Dialog.Title>
+              <Dialog.Title className="font-medium">詳細</Dialog.Title>
               <Dialog.Description className="text-sm text-ink-muted">
-                ブラウザが示している保存容量の目安です。実際に保存できる量を保証するものではありません。
+                アプリのバージョン情報と保存容量を確認できます。
               </Dialog.Description>
             </div>
             <Dialog.Close asChild>
@@ -61,9 +136,44 @@ export function StorageDialog({ open, onOpenChange }: { open: boolean; onOpenCha
             </Dialog.Close>
           </div>
           <div className="space-y-4 px-4 py-4 text-sm">
-            {measuring ? <p className="text-ink-muted">容量を計測しています。</p> : null}
+            <section className="space-y-2">
+              <h2 className="font-medium">バージョン情報</h2>
+              <dl className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-1">
+                <dt>アプリの種類</dt>
+                <dd className="text-right">{desktop ? "デスクトップ版" : "ブラウザ版"}</dd>
+                {desktop ? (
+                  <>
+                    <dt>現在のバージョン</dt>
+                    <dd className="text-right tabular-nums">
+                      {version ?? "取得できません"}
+                    </dd>
+                  </>
+                ) : null}
+              </dl>
+              {desktop ? (
+                <>
+                  <Button
+                    variant="quiet"
+                    disabled={checkingUpdate}
+                    onClick={() => void handleCheckUpdate()}
+                  >
+                    {checkingUpdate ? "確認中…" : "更新を確認"}
+                  </Button>
+                  {updateMessage ? (
+                    <p className="text-xs text-ink-muted" aria-live="polite">
+                      {updateMessage}
+                    </p>
+                  ) : null}
+                </>
+              ) : (
+                <p className="text-xs text-ink-faint">
+                  ブラウザ版は自動的に最新の内容が読み込まれます。
+                </p>
+              )}
+            </section>
             <section className="space-y-2">
               <h2 className="font-medium">このアプリの使用量</h2>
+              {measuring ? <p className="text-ink-muted">容量を計測しています。</p> : null}
               {snapshot?.app ? (
                 <dl className="grid grid-cols-[1fr_auto] gap-x-4 gap-y-1">
                   <dt>画像・動画</dt>
