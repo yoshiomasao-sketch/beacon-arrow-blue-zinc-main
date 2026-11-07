@@ -1,5 +1,8 @@
+
 import { useEffect } from "react";
 import { isTauri } from "@tauri-apps/api/core";
+import { getVersion } from "@tauri-apps/api/app";
+import { getCurrentWindow } from "@tauri-apps/api/window";
 import { check } from "@tauri-apps/plugin-updater";
 
 /**
@@ -7,6 +10,32 @@ import { check } from "@tauri-apps/plugin-updater";
  * The browser version is intentionally unaffected.
  */
 export function TauriUpdater() {
+  // Set the desktop window title with the current app version.
+  useEffect(() => {
+    if (!isTauri()) return;
+
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        const version = await getVersion();
+
+        if (cancelled) return;
+
+        await getCurrentWindow().setTitle(
+          `ポートフォリオΔ v${version}`
+        );
+      } catch (error) {
+        console.error("Failed to set window title:", error);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Check for application updates.
   useEffect(() => {
     if (!isTauri()) return;
 

@@ -1816,7 +1816,6 @@ export function PortfolioScreen() {
   if (phase === "unavailable") {
     return (
       <div className="library-shell">
-      <TauriUpdater />
         <div className="library-main">
           <div className="error-well grid place-items-center px-6 text-center">
             <div className="grid max-w-md gap-3">
@@ -1830,8 +1829,9 @@ export function PortfolioScreen() {
       </div>
     );
   }
-
-  return (
+return (
+  <>
+    <TauriUpdater />
     <div
       className="library-shell"
       style={{
@@ -2330,6 +2330,7 @@ export function PortfolioScreen() {
         </div>
       ) : null}
     </div>
+  </>
   );
 }
 
